@@ -19,6 +19,7 @@
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#criancas">Crianças</a></li>
                     <li><a href="#animais">Animais</a></li>
+                    <li><a href="#adocao">Adote</a></li>
                     <li><a href="#contribuir">Como Ajudar</a></li>
                     <li><a href="#contato">Contato</a></li>
                     <li><a href="#" class="btn-login" id="openLogin">Login</a></li>
@@ -89,7 +90,7 @@
             </div>
             <div class="campanha-text">
                 <p>Nosso projeto também possui um espaço dedicado ao resgate e cuidado de animais abandonados.</p>
-                <p>Em nosso abrigo, cães e gatos recebem:</p>
+                <p>Apoiamos o resgate de cães e gatos, que recebem:</p>
                 <ul class="lista-beneficios">
                     <li><i class="fa-solid fa-bone"></i> Alimentação</li>
                     <li><i class="fa-solid fa-heart-pulse"></i> Cuidados básicos</li>
@@ -365,8 +366,8 @@
     </footer>
 
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-card" id="loginBox">
-            <button class="close-btn" id="closeLogin">&times;</button>
+        <div class="modal-card" id="loginBox" role="dialog" aria-modal="true" aria-label="Login e cadastro">
+            <button class="close-btn" id="closeLogin" aria-label="Fechar">&times;</button>
             
             <div id="loginForm">
                 <h2>Login</h2>
@@ -408,6 +409,17 @@
 
         goToRegister.onclick = (e) => { e.preventDefault(); loginForm.classList.add('hidden'); registerForm.classList.remove('hidden'); }
         goToLogin.onclick = (e) => { e.preventDefault(); registerForm.classList.add('hidden'); loginForm.classList.remove('hidden'); }
+
+        // Formulários demonstrativos: não recarregam a página
+        document.querySelectorAll('#modalOverlay form').forEach((f) => {
+            f.onsubmit = (e) => {
+                e.preventDefault();
+                alert('Funcionalidade demonstrativa: o site é fictício e não armazena dados.');
+            };
+        });
+
+        // Fechar o modal com a tecla Esc
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modalOverlay.style.display = 'none'; });
     </script>
 </body>
 </html>
